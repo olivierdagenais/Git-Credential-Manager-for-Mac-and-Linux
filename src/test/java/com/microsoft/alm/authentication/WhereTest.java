@@ -98,6 +98,21 @@ public class WhereTest
         verify(existenceChecker, times(3)).call(anyString());
     }
 
+    @Test public void findCurlVersionInStrings_Fedora() throws Exception
+    {
+        final Class<? extends WhereTest> me = this.getClass();
+        final BufferedReader br = new BufferedReader(new InputStreamReader(me.getResourceAsStream("strings_libcurl.txt")));
+        try
+        {
+            final String actual = Where.findCurlVersionInStrings(br);
+            Assert.assertEquals("7.40.0", actual);
+        }
+        finally
+        {
+            br.close();
+        }
+    }
+
     @Test public void findLibCurlInLdd_Fedora() throws Exception
     {
         final Class<? extends WhereTest> me = this.getClass();

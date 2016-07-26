@@ -278,6 +278,26 @@ public class Where
         return result;
     }
 
+    private static String CLIENT_LIBCURL_PREFIX = "CLIENT libcurl ";
+    private static int CLIENT_LIBCURL_PREFIX_LENGTH = CLIENT_LIBCURL_PREFIX.length();
+
+    static String findCurlVersionInStrings(final BufferedReader br) throws IOException
+    {
+        String result = null;
+        String line;
+        while ((line = br.readLine()) != null)
+        {
+            if (result != null)
+                continue;
+            final int i = line.indexOf(CLIENT_LIBCURL_PREFIX);
+            if (i == 0)
+            {
+                result = line.substring(CLIENT_LIBCURL_PREFIX_LENGTH);
+            }
+        }
+        return result;
+    }
+
     private static final Pattern LIBCURL_PATTERN =
         Pattern.compile("\\s(?:libcurl[^ ]+) => ([^ ]+) \\(.+\\)");
 

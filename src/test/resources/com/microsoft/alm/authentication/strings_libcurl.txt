@@ -1,0 +1,1091 @@
+_ITM_deregisterTMCloneTable
+_ITM_registerTMCloneTable
+_Jv_RegisterClasses
+curl_easy_unescape
+__stack_chk_fail
+__ctype_tolower_loc
+__isoc99_sscanf
+curl_mvsnprintf
+curl_slist_free_all
+__errno_location
+curl_easy_strerror
+stringprep_check_version
+idna_to_ascii_lz
+stringprep_locale_charset
+idna_to_unicode_lzlz
+curl_multi_remove_handle
+curl_multi_cleanup
+curl_slist_append
+libssh2_version
+curl_version_info
+curl_easy_escape
+curl_global_init
+curl_global_init_mem
+curl_global_cleanup
+curl_easy_setopt
+curl_easy_perform
+curl_multi_setopt
+curl_multi_add_handle
+curl_multi_wait
+curl_multi_perform
+curl_multi_info_read
+curl_easy_cleanup
+curl_easy_getinfo
+curl_easy_duphandle
+curl_easy_reset
+curl_easy_pause
+__vsnprintf_chk
+gss_release_buffer
+gss_delete_sec_context
+gss_release_name
+GSS_C_NT_HOSTBASED_SERVICE
+gss_import_name
+gss_display_name
+curl_multi_init
+curl_multi_fdset
+curl_multi_timeout
+curl_multi_assign
+curl_multi_socket
+curl_multi_socket_action
+curl_multi_socket_all
+curl_share_init
+curl_share_setopt
+curl_share_cleanup
+curl_multi_strerror
+curl_share_strerror
+__xpg_strerror_r
+libssh2_session_block_directions
+libssh2_sftp_write
+libssh2_sftp_read
+libssh2_channel_write_ex
+libssh2_channel_read_ex
+libssh2_session_set_blocking
+libssh2_session_handshake
+libssh2_hostkey_hash
+libssh2_session_hostkey
+libssh2_knownhost_checkp
+libssh2_userauth_list
+libssh2_scp_recv
+libssh2_scp_send64
+libssh2_sftp_symlink_ex
+libssh2_sftp_close_handle
+libssh2_sftp_stat_ex
+libssh2_sftp_seek64
+libssh2_sftp_mkdir_ex
+libssh2_sftp_shutdown
+libssh2_sftp_open_ex
+libssh2_sftp_readdir_ex
+libssh2_knownhost_free
+libssh2_agent_disconnect
+libssh2_agent_free
+libssh2_session_free
+libssh2_channel_free
+libssh2_session_disconnect_ex
+libssh2_sftp_init
+libssh2_userauth_keyboard_interactive_ex
+libssh2_sftp_last_error
+libssh2_channel_wait_closed
+libssh2_channel_wait_eof
+libssh2_channel_send_eof
+libssh2_sftp_rmdir_ex
+libssh2_agent_connect
+libssh2_userauth_password_ex
+libssh2_sftp_unlink_ex
+libssh2_agent_get_identity
+libssh2_agent_list_identities
+libssh2_userauth_publickey_fromfile_ex
+libssh2_sftp_rename_ex
+libssh2_knownhost_add
+libssh2_knownhost_writefile
+libssh2_session_last_error
+libssh2_agent_userauth
+libssh2_session_last_errno
+libssh2_userauth_authenticated
+libssh2_agent_init
+libssh2_session_init_ex
+libssh2_knownhost_init
+libssh2_knownhost_readfile
+gss_display_status
+gss_inquire_context
+ldap_unbind_ext
+ldap_parse_result
+ldap_get_option
+ldap_set_option
+ldap_err2string
+ber_sockbuf_add_io
+ldap_first_message
+ldap_next_message
+ldap_get_dn_ber
+ldap_get_attribute_ber
+ldap_abandon_ext
+ldap_search_ext
+ldap_free_urldesc
+ldap_pvt_url_scheme2proto
+pthread_mutex_destroy
+pthread_mutex_lock
+pthread_mutex_unlock
+pthread_mutex_init
+gss_init_sec_context
+PK11_GetInternalKeySlot
+PK11_ImportSymKey
+PK11_ParamFromIV
+PK11_CreateContextBySymKey
+PK11_DestroyContext
+PK11_FreeSymKey
+SECITEM_FreeItem
+__ctype_toupper_loc
+gss_nt_service_name
+PR_GetDefaultIOMethods
+PR_ErrorToString
+CERT_NameToAscii
+CERT_GetCommonName
+CERT_GetCertTimes
+PR_GMTParameters
+SSL_RevealPinArg
+PK11_FindSlotByName
+PK11_ReadRawAttribute
+PK11_FindCertFromDERCertItem
+PK11_FindPrivateKeyFromCert
+NSS_GetClientAuthData
+CERT_DestroyCertificate
+SSL_PeerCertificate
+PK11_DestroyGenericObject
+SSL_NumImplementedCiphers
+SSL_ImplementedCiphers
+SSL_CipherPrefSet
+PK11_CreateGenericObject
+SSL_CipherPolicyGet
+PR_GetUniqueIdentity
+NSS_SetDomesticPolicy
+NSS_InitContext
+CERT_GetDefaultCertDB
+SSL_AuthCertificate
+PK11_FindCertFromNickname
+SECMOD_WaitForAnyTokenEvent
+PK11_Authenticate
+PR_SetSocketOption
+PR_MillisecondsToInterval
+SSL_ForceHandshakeWithTimeout
+PK11_SetPasswordFunc
+PR_NewTCPSocket
+SSL_GetChannelInfo
+CERT_FindCertIssuer
+SECITEM_CompareItem
+CERT_ExtractPublicKey
+PK11_DEREncodePublicKey
+SECKEY_DestroyPublicKey
+SSL_GetCipherSuiteInfo
+SSL_SetPKCS11PinArg
+SSL_ResetHandshake
+SSL_SetSockPeerID
+SSL_VersionRangeSet
+SECMOD_LoadUserModule
+SECMOD_DestroyModule
+SSL_AuthCertificateHook
+SSL_BadCertHook
+SSL_HandshakeCallback
+PR_GetOpenFileInfo
+SECITEM_AllocItem
+ATOB_ConvertAsciiToItem
+SEC_FindCrlByDERCert
+SSL_GetClientAuthDataHook
+PR_ImportTCPSocket
+PR_CreateIOLayerStub
+SSL_ClearSessionCache
+SECMOD_UnloadUserModule
+NSS_ShutdownContext
+PR_SecondsToInterval
+SSL_InvalidateSession
+PK11_GenerateRandom
+PK11_CreateDigestContext
+PK11_DigestFinal
+libpthread.so.0
+libgssapi_krb5.so.2
+libk5crypto.so.3
+libcom_err.so.2
+liblber-2.4.so.2
+libldap-2.4.so.2
+gssapi_krb5_2_MIT
+Couldn't open file %s
+Can't open %s for writing
+Can't get the size of %s
+Content-Length: %ld
+Accept-ranges: bytes
+Can't get the size of file.
+Last-Modified: %s, %02d %s %4d %02d:%02d:%02d GMT
+failed to resume file:// transfer
+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_
+ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/
+%255[^:]:%d:%255s
+Resolve %s found illegal!
+Added %s:%d:%s to DNS cache
+Hostname in DNS cache was stale, zapped
+Hostname %s was found in DNS cache
+%2ld:%02ld:%02ld
+Callback aborted
+** Resuming transfer from byte position %ld
+  %% Total    %% Received %% Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+%3ld %s  %3ld %s  %3ld %s  %s  %s %s %s %s %s
+; filename="%s"
+application/octet-stream
+Content-Type: %s
+couldn't open file "%s"
+%s; boundary=%s
+application/xml
+------------------------%08x%08x
+Content-Type: multipart/form-data
+Content-Disposition: form-data; name="
+Content-Type: multipart/mixed; boundary=%s
+Content-Disposition: attachment
+%s%s%s	%s	%s	%s	%ld	%s	%s
+# Fatal libcurl error
+skipped cookie with bad tailmatch domain: %s
+%s cookie %s="%s" for domain %s, path %s, expire %ld
+ignoring failed cookie_init for %s
+# Netscape HTTP Cookie File
+# http://curl.haxx.se/docs/http-cookies.html
+# This file was generated by libcurl! Edit at your own risk.
+WARNING: failed to save cookies in %s
+Rewind stream after send
+Empty reply from server
+Proxy-authorization:
+%sAuthorization: Basic %s
+Expect: 100-continue
+Invalid TIMEVALUE
+If-Modified-Since: %s
+If-Unmodified-Since: %s
+Last-Modified: %s
+Transfer-Encoding: chunked
+Accept-Encoding:
+Accept-Encoding: %s
+Transfer-Encoding:
+Host: %s%s%s:%hu
+Could not seek stream
+Range: bytes=%s
+Content-Range: bytes %s/%ld
+Proxy-Connection:
+Content-Length: 0
+Failed sending POST request
+Internal HTTP POST error!
+Content-Length:
+Failed sending PUT request
+Failed sending HTTP request
+ RTSP/%d.%d %3d
+Maximum file size exceeded
+Content-Encoding:
+WWW-Authenticate:
+Proxy-authenticate:
+NTLM/Negotiate send, close instead of sending %ld bytes
+Avoided giant realloc for header (max is %d)!
+Failed to alloc memory for big header!
+%s auth using %s with user '%s'
+The requested URL returned error: %d
+Authentication problem. Ignoring this.
+Ignoring duplicate digest auth header.
+%s, %02d %s %4d %02d:%02d:%02d GMT
+Proxy-Connection: Keep-Alive
+Could only read %ld bytes from the input
+File already completely uploaded
+Content-Range: bytes 0-%ld/%ld
+Content-Range: bytes %s%ld/%ld
+%s%s%s%s%s%s%s%s%s%s%s
+Could not get Content-Type header line!
+Content-Type: application/x-www-form-urlencoded
+Failed sending HTTP POST request
+upload completely sent off: %ld out of %ld bytes
+Chunky upload is not supported by HTTP 1.0
+no chunk, no close, no size. Assume close to signal end
+Keep sending data to get tossed away!
+HTTP error before end of send, stop sending
+Lying server, not serving HTTP/2
+The requested URL returned error: %s
+HTTP 1.0, assume close after body
+Negative content-length: %ld, closing after transfer
+HTTP/1.0 proxy connection set to keep alive!
+HTTP/1.1 proxy connection set close!
+HTTP/1.0 connection set to keep alive!
+Send failure: %s
+Recv failure: %s
+Failed writing header
+Write callback asked for PAUSE when not supported!
+Failed writing body (%zu != %zu)
+We got a 421 - timeout!
+Failed to read data
+getsockname() failed: %s
+bind(port=%hu) failed: %s
+socket failure: %s
+Access denied: %03d
+Weirdly formatted EPSV reply
+%d,%d,%d,%d,%d,%d
+Bad PASV/EPSV response: %03d
+Can't resolve new host %s:%hu
+Couldn't set desired mode
+Checking for server connect
+Authentication successful
+ACCT rejected by server: %03d
+Entry path is '%s'
+Failed to figure out path
+QUOT command failed with %03d
+Failed to MKD dir: %03d
+%04d%02d%02d%02d%02d%02d
+Given file does not exist
+Skipping time comparison
+Couldn't use REST
+disabling EPRT usage
+Failed to do PORT
+Connect data stream actively
+Maxdownload = %ld
+Getting file with size: %ld
+RETR response: %03d
+Failed FTP upload: %0d
+Wildcard - Parsing started
+Wildcard - START of "%s"
+control connection looks dead
+No data was received!
+QUOT string not accepted: %s
+Failure sending QUIT command: %s
+ftp server doesn't support SIZE
+Offset (%ld) was beyond file size (%ld)
+File already completely downloaded
+Instructs server to resume from offset %ld
+Connect data stream passively
+File already completely uploaded
+failed to resolve the address provided to PORT: %s
+bind(port=%hu) on non-local address failed: %s
+bind() failed, we ran out of ports!
+Failure sending EPRT command: %s
+Failure sending PORT command: %s
+Error accept()ing server connect
+Connection accepted from server
+Doing the SSL/TLS handshake on the data stream
+Uploading to a URL without a file name!
+Request has same path as previous transfer
+ACCT requested but none available
+Failed EPSV attempt. Disabling EPSV
+Illegal port number in EPSV reply
+Skips %d.%d.%d.%d for data connection, uses %s instead
+Can't resolve proxy host %s:%hu
+Connecting to %s (%s) port %d
+Couldn't interpret the 227-response
+Got a %03d response code instead of the assumed 200
+FTP response aborted due to select/poll error: %d
+Accept timeout occurred while waiting server connect
+There is negative response in cache while serv connect
+Error while waiting for server connect
+Ready to accept data connection from server
+Ctrl conn has data while waiting for data conn
+Preparing for accepting server on data port
+Connection to proxy confirmed
+unknown proxytype option given
+Got a %03d ftp-server response when 220 was expected
+Logging in with password in cleartext!
+unsupported parameter to CURLOPT_FTPSSLAUTH: %d
+Failed to clear the command channel (CCC)
+Server denied you to change to the given directory
+%04d%02d%02d %02d:%02d:%02d GMT
+unsupported MDTM reply format
+The requested document is not new enough
+The requested document is not old enough
+PRET command not accepted: %03d
+Data conn was not available immediately
+Wildcard - "%s" skipped by user
+ftp_perform ends with SECONDARY: %d
+Remembering we are in dir "%s"
+Failure sending ABOR command: %s
+partial download completed, closing connection
+server did not report OK, got %d
+Uploaded unaligned file size (%ld out of %ld bytes)
+Received only partial file: %ld bytes
+Input domain encoded as `%s'
+Closing connection %ld
+<url> malformed
+Rebuilt URL to: %s
+memory shortage
+Invalid IPv6 address format
+%s://%s%s%s:%hu%s%s%s
+Port number out of range
+ftp@example.com
+No connections available.
+Couldn't resolve host '%s'
+Couldn't resolve proxy '%s'
+Found bundle for host %s: %p
+Failed to convert %s to ACE; %s
+WARNING: %s; pos %u = `%c'/0x%02X
+WARNING: TLD check for %s failed; %s
+/etc/pki/tls/certs/ca-bundle.crt
+CURLOPT_SSL_VERIFYHOST no longer supports 1 as value!
+Connection %ld seems to be dead!
+Connected to %s (%s) port %ld (#%ld)
+Illegal characters found in URL
+Please URL encode %% as %%25, see RFC 6874.
+Invalid network interface: %s; %s
+Protocol "%s" not supported or disabled in libcurl
+[%*45[0123456789abcdefABCDEF:.]%c
+IPv6 numerical address used in URL without brackets
+Couldn't find host %s in the .netrc file; using defaults
+Server doesn't support pipelining
+Connection #%ld is still name resolving, can't reuse
+Connection #%ld isn't open enough, can't reuse
+Found connection %ld, with requests in the pipe (%zu)
+We can reuse, but we want a new connection anyway
+Re-using existing connection! (#%ld) with host %s
+NTLM picked AND auth done set, clear picked!
+NTLM-proxy picked AND auth done set, clear picked!
+Unix socket path too long: '%s'
+Connection cache is full, closing the oldest one.
+Connection #%ld to host %s left intact
+lookup word is missing
+Failed sending DICT request
+CLIENT libcurl 7.40.0
+CLIENT libcurl 7.40.0
+CLIENT libcurl 7.40.0
+Operation too slow. Less than %ld bytes/sec transferred the last %ld seconds
+x86_64-redhat-linux-gnu
+0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ
+0123456789abcdefghijklmnopqrstuvwxyz
+%127[^= ]%*[ =]%255s
+Unknown telnet option %s
+(terminated by 
+, not IAC SE!) 
+(Empty suboption?)
+%s (unsupported)
+Width: %hu ; Height: %hu
+Sending data failed (%d)
+In SUBOPTION processing, RCVD
+SUPPRESS GO AHEAD
+Syntax error in telnet option: %s
+operation aborted by callback
+select/poll returned error
+Ignoring the response-body
+Failed writing data
+%s in chunked-encoding
+Rewinding %zu bytes
+%15[^?&/:]://%c
+Switch from POST to GET
+Disables POST, goes with %s
+Read callback asked for PAUSE when not supported!
+read function returned funny value
+seek callback returned error %d
+the ioctl callback returned %d
+ioctl callback returned error %d
+necessary data rewind wasn't possible
+Rewinding stream by : %zd bytes on url %s (zero-length body)
+Excess found in a non pipelined read: excess = %zd url = %s (zero-length body)
+The entire document is already downloaded
+HTTP server doesn't seem to support byte ranges. Cannot resume.
+Simulate a HTTP 304 response!
+Leftovers after chunking: %zu bytes
+Rewinding stream by : %zu bytes on url %s (size = %ld, maxdownload = %ld, bytecount = %ld, nread = %zd)
+Excess found in a non pipelined read: excess = %zu, size = %ld, maxdownload = %ld, bytecount = %ld
+Unrecognized content encoding type. libcurl understands `identity', `deflate' and `gzip' content encodings.
+we are done reading and this is set to close, stop send
+Failed to alloc scratch buffer!
+We are completely uploaded and fine
+Done waiting for 100-continue
+Operation timed out after %ld milliseconds with %ld out of %ld bytes received
+Operation timed out after %ld milliseconds with %ld bytes received
+transfer closed with %ld bytes remaining to read
+transfer closed with outstanding read data remaining
+Maximum (%ld) redirects followed
+Issue another request to this URL: '%s'
+Re-used connection seems dead, get a new one
+Connection died, retrying a fresh connect
+CONNECT_ONLY is required!
+Failed to get recent socket
+easy handle already used in multi handle
+Failed realloc of size %u
+Trying mechanism %s...
+Skipping mechanism with empty name (%p)
+Failed initialization for %s. Skipping it.
+Mechanism %s is not supported by the server (server returned ftp code: 504).
+Mechanism %s was rejected by the server (server returned ftp code: 534).
+server does not support the security extensions
+Failed to set the protection's buffer size.
+Failed to set the protection level.
+Trying against %s
+base64-encoding: %s
+base64-decoding: %s
+Error creating security context
+Server didn't accept auth data
+Error importing service name %s
+Illegal or missing hexadecimal sequence
+Too long hexadecimal number
+Malformed encoding found
+Bad content-encoding found
+TCP_NODELAY set
+Local port: %hu
+bind failed with errno %d: %s
+Couldn't bind to '%s'
+Connection time-out
+Connection failed
+getpeername() failed with errno %d: %s
+getsockname() failed with errno %d: %s
+ssrem inet_ntop() failed with errno %d: %s
+ssloc inet_ntop() failed with errno %d: %s
+sa_addr inet_ntop() failed with errno %d: %s
+Could not set TCP_NODELAY: %s
+Failed to set SO_KEEPALIVE on fd %d
+Failed to set TCP_KEEPIDLE on fd %d
+Failed to set TCP_KEEPINTVL on fd %d
+Local Interface %s is ip %s using address family %i
+SO_BINDTODEVICE %s failed with errno %d: %s; will do regular bind
+Name '%s' family %i resolved to '%s' family %i
+Bind to local port %hu failed, trying next
+Immediate connect fail for %s: %s
+Couldn't bind to interface '%s'
+After %ldms connect time, move on!
+connect to %s port %ld failed: %s
+Failed to connect to %s port %ld: %s
+Curl_poll(%d ds, %d ms)
+Internal error clearing splay node = %d
+Internal error removing splay node = %d
+Pipe broke: handle %p, url = %s
+In state %d with no easy_conn, bail out!
+Resolving timed out after %ld milliseconds
+Connection timed out after %ld milliseconds
+Hostname was found in DNS cache
+Error while processing content unencoding: %s
+Error while processing content unencoding: Unknown failure within decompression software.
+%sAuthorization: Digest %s
+gss_init_sec_context() failed: 
+%sAuthorization: Negotiate %s
+Unsupported protocol
+Failed initialization
+Couldn't resolve proxy name
+Couldn't resolve host name
+Couldn't connect to server
+FTP: weird server reply
+FTP: unknown PASS reply
+FTP: unknown PASV reply
+FTP: couldn't set file type
+Transferred a partial file
+Quote command returned error
+HTTP response code said error
+Timeout was reached
+FTP: command PORT failed
+FTP: command REST failed
+SSL connect error
+Couldn't resume download
+Couldn't read a file:// file
+LDAP: cannot bind
+LDAP: search failed
+Malformed telnet option
+SSL crypto engine not found
+Invalid LDAP URL
+Requested SSL level failed
+TFTP: File Not Found
+TFTP: Access Violation
+TFTP: Illegal operation
+TFTP: Unknown transfer ID
+Remote file already exists
+TFTP: No such user
+Conversion failed
+Remote file not found
+Error in the SSH layer
+RTSP session error
+Unable to parse FTP file list
+Chunk callback failed
+Invalid multi handle
+Invalid easy handle
+Invalid socket argument
+Unknown share option
+Share currently in use
+Invalid share handle
+CURLSHcode unknown
+Unknown error %d
+URL using bad/illegal format or missing URL
+A requested feature, protocol or option was not found built-in in this libcurl due to a build-time decision.
+Access denied to remote resource
+FTP: The server failed to connect to data port
+FTP: Accepting server connect has timed out
+FTP: The server did not accept the PRET command.
+FTP: unknown 227 response format
+FTP: can't figure out the host in the PASV response
+Error in the HTTP2 framing layer
+FTP: couldn't retrieve (RETR failed) the specified file
+Failed writing received data to disk/application
+Upload failed (at start/before it took off)
+Failed to open/read local data from file/application
+Requested range was not delivered by the server
+Internal problem setting up the POST
+A required function in the library was not found
+Operation was aborted by an application callback
+A libcurl function was given a bad argument
+Failed binding local connection end
+Number of redirects hit maximum amount
+An unknown option was passed in to libcurl
+SSL peer certificate or SSH remote key was not OK
+Server returned nothing (no headers, no data)
+Can not set SSL crypto engine as default
+Failed to initialise SSL crypto engine
+Failed sending data to the peer
+Failure when receiving data from the peer
+Problem with the local SSL certificate
+Couldn't use specified SSL cipher
+Peer certificate cannot be authenticated with given CA certificates
+Problem with the SSL CA cert (path? access rights?)
+Unrecognized or bad HTTP Content or Transfer-Encoding
+Failed to shut down the SSL connection
+Failed to load CRL file (path? access rights?, format?)
+Issuer check against peer certificate failed
+Send failed since rewinding of the data stream failed
+Disk full or allocation exceeded
+Caller must register CURLOPT_CONV_ callback options
+Socket not ready for send/recv
+RTSP CSeq mismatch or invalid CSeq
+The max connection limit is reached
+SSL public key does not match pinned public key
+Please call curl_multi_perform() soon
+The easy handle is already added to a multi handle
+Feature not enabled in this library
+%31[ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz]
+Received last DATA packet block %d again.
+Received unexpected DATA packet block %d, expecting block %d
+Timeout waiting for block %d ACK.  Retries = %d
+set timeouts for state %d; Total %ld, retry %d maxtry %d
+Received ACK for block %d, expecting %d
+tftp_tx: giving up waiting for block %d ack
+tftp_tx: internal error, event: %i
+tftp_send_first: internal error
+Malformed ACK packet, rejecting
+invalid blocksize value in OACK packet
+blksize is larger than max supported
+blksize is smaller than min supported
+server requested blksize larger than allocated
+invalid tsize -:%s:- value in OACK packet
+Internal error: Unexpected packet
+tftp_rx: internal error
+Connected for receive
+Connected for transmit
+bind() failed; %s
+Internal state machine error
+TFTP response timeout
+Received too short packet
+got option=(%s) value=(%s)
+blksize parsed from OACK
+%s (%d) %s (%d)
+tsize parsed from OACK
+%hu.%hu.%hu.%hu
+SOCKS4%s request granted.
+SOCKS5: no connection here
+SOCKS5: connection timeout
+SOCKS5 nothing to read
+SOCKS5 read timeout
+SOCKS5 read error occurred
+SOCKS4 communication to %s:%d
+SOCKS4 connect to %s (locally resolved)
+Failed to resolve "%s" for SOCKS4 connect.
+Too long SOCKS proxy name, can't use!
+Failed to send SOCKS4 connect request.
+Failed to receive SOCKS4 connect request ack.
+SOCKS4 reply has wrong version, version should be 4.
+Can't complete SOCKS4 connection to %d.%d.%d.%d:%d. (%d), request rejected or failed.
+Can't complete SOCKS4 connection to %d.%d.%d.%d:%d. (%d), request rejected because SOCKS server cannot connect to identd on the client.
+Can't complete SOCKS4 connection to %d.%d.%d.%d:%d. (%d), request rejected because the client program and identd report different user-ids.
+Can't complete SOCKS4 connection to %d.%d.%d.%d:%d. (%d), Unknown.
+SOCKS5: server resolving disabled for hostnames of length > 255 [actual len=%zu]
+SOCKS5: error occurred during connection
+Unable to send initial SOCKS5 request.
+Unable to receive initial SOCKS5 response.
+Received invalid version in initial SOCKS5 response.
+Unable to negotiate SOCKS5 GSS-API context.
+Failed to send SOCKS5 sub-negotiation request.
+Unable to receive SOCKS5 sub-negotiation response.
+User was rejected by the SOCKS5 server (%d %d).
+No authentication method was acceptable. (It is quite likely that the SOCKS5 server wanted a username/password, since none was supplied to the server on this connection.)
+No authentication method was acceptable.
+Undocumented SOCKS5 mode attempted to be used by server.
+Failed to resolve "%s" for SOCKS5 connect.
+SOCKS5 GSS-API protection not yet implemented.
+Failed to send SOCKS5 connect request.
+Failed to receive SOCKS5 connect request ack.
+SOCKS5 reply has wrong version, version should be 5.
+Can't complete SOCKS5 connection to %d.%d.%d.%d:%d. (%d)
+Can't complete SOCKS5 connection to %s:%d. (%d)
+Can't complete SOCKS5 connection to %02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%d. (%d)
+No such file or directory
+Permission denied
+Operation failed
+Bad message from SFTP server
+Not connected to SFTP server
+Unknown error in libssh2
+File already exists
+File is write protected
+User quota exceeded
+Unknown principle
+File lock conflict
+Directory not empty
+Not a directory
+Invalid filename
+Link points to itself
+SSH MD5 fingerprint: %s
+MD5 checksum match!
+SSH host check: %d, key: %s
+Warning, writing %s failed!
+Failure connecting to agent
+No identity would match
+keyboard-interactive
+Authentication failure
+Authentication complete
+SSH CONNECT phase done
+Sending quote commands
+Unknown SFTP command
+symlink command failed: %s
+mkdir command failed: %s
+rename command failed: %s
+rmdir command failed: %s
+rm command failed: %s
+Bad file size (%ld)
+Upload failed: %s (%d/%d)
+Creating directory '%s'
+Failed to close libssh2 file
+Channel failed to close: %d
+Operation timed out
+Connection to SFTP server lost
+Operation not supported by SFTP server
+Failure establishing ssh session
+Warning adding the known host %s failed!
+SSH user accepted with no authentication
+SSH authentication methods available: %s
+Using SSH public key file '%s'
+Using SSH private key file '%s'
+Initialized SSH public key authentication
+SSH public key authentication failed: %s
+Initialized password authentication
+Could not create agent object
+Failure requesting identities to agent
+Agent based authentication successful
+Initialized keyboard interactive authentication
+Failure initializing sftp session: %s
+257 "%s" is current directory.
+Syntax error in SFTP command. Supply parameter(s)!
+Syntax error: Bad first parameter
+Syntax error in chgrp/chmod/chown: Bad second parameter
+Syntax error in ln/symlink: Bad second parameter
+Syntax error in rename: Bad second parameter
+Attempt to get SFTP stats failed: %s
+Syntax error: chgrp gid not a number
+Syntax error: chmod permissions not a number
+Syntax error: chown uid not a number
+Attempt to set SFTP stats failed: %s
+Creating the dir/file failed: %s
+Could not open directory for reading: %s
+Could not open remote file for reading: %s :: %d
+Could not open remote file for reading: %s
+Failed to stop libssh2 sftp subsystem
+SCP requires a known file size for upload
+Failed to send libssh2 channel EOF
+Failed to get channel EOF: %d
+Failed to free libssh2 scp subsystem
+Failed to disconnect libssh2 session
+Failed to disconnect from libssh2 agent
+Failed to free libssh2 session
+Denied establishing ssh session: mismatch md5 fingerprint. Remote %s is not equal to %s
+Denied establishing ssh session: md5 fingerprint not available
+Failure initialising ssh session
+Failed to read known hosts from %s
+OOOOOOOOOO33OOCOOO33
+GSS-API error: %s failed:
+ GSS-API confidentiality
+out GSS-API data
+ GSS-API integrity
+gss_import_name()
+gss_init_sec_context
+gss_inquire_context
+gss_display_name
+Failed to create service name.
+Failed to initial GSS-API token.
+Failed to send GSS-API authentication request.
+Failed to send GSS-API authentication token.
+Failed to receive GSS-API authentication response.
+Invalid GSS-API authentication response type (%d %d).
+Could not allocate memory for GSS-API authentication response token.
+Failed to receive GSS-API authentication token.
+Failed to determine user name.
+SOCKS5 server authencticated user %s with GSS-API.
+SOCKS5 server supports GSS-API %s data protection.
+Failed to wrap GSS-API encryption value into token.
+Failed to send GSS-API encryption request.
+Failed to send GSS-API encryption type.
+Failed to receive GSS-API encryption response.
+Invalid GSS-API encryption response type (%d %d).
+Failed to receive GSS-API encryptrion type.
+Failed to unwrap GSS-API encryption value into token.
+Invalid GSS-API encryption response length (%d).
+SOCKS5 access with%s protection granted.
+Cannot FETCH without a UID.
+FETCH %s BODY[%s]<%s>
+FETCH %s BODY[%s]
+Bad tagged response
+AUTHENTICATE %s %s
+AUTHENTICATE %s
+STARTTLS not supported.
+STARTTLS denied. %c
+Authentication cancelled
+Access denied. %c
+Found %lu bytes to download
+APPEND %s (\Seen) {%ld}
+Cannot SEARCH without a query string.
+Unexpected continuation response
+No known authentication mechanisms supported!
+Got unexpected imap-server response
+OK [UIDVALIDITY %19[0123456789]]
+Mailbox UIDVALIDITY has changed
+Written %lu bytes, %lu bytes are left for transfer
+Failed to parse FETCH response.
+Cannot APPEND without a mailbox.
+Cannot APPEND with unknown input file size
+Cannot SELECT without a mailbox.
+STLS not supported.
+Authentication failed: %d
+Got unexpected pop3-server response
+Remote access denied: %d
+Command failed: %d
+MAIL failed: %d
+RCPT failed: %d
+DATA failed: %d
+MAIL FROM:%s AUTH=%s
+MAIL FROM:%s AUTH=%s SIZE=%s
+MAIL FROM:%s SIZE=%s
+Got unexpected smtp-server response: %d
+server response timeout
+select/poll error
+response reading failed
+Excessive server response line length received, %zd bytes. Stripping
+The CSeq of this request %ld did not match the response %ld
+Got an RTP Receive with a CSeq of %ld
+Got invalid RTSP request: RTSPREQ_NONE
+Got invalid RTSP request: RTSPREQ_LAST
+Refusing to issue an RTSP request [%s] without a session ID.
+Refusing to issue an RTSP SETUP without a Transport: header.
+CSeq cannot be set as a custom header.
+Session ID cannot be set as a custom header.
+Content-Type: text/parameters
+Content-Type: application/sdp
+Got an error writing an RTP packet
+Unable to read the CSeq header: [%s]
+Got RTSP Session ID Line [%s], but wanted ID [%s]
+Accept: application/sdp
+Failed sending RTSP request
+Cannot pause RTP
+Failed writing RTP data
+Got a blank Session ID
+url parsing problem
+unrecognized scheme
+unbalanced delimiter
+bad host or port
+bad or missing attributes
+bad or missing scope
+bad or missing filter
+bad or missing extensions
+LDAP local: bind ldap_result %s
+LDAP local: bind ldap_parse_result %s
+LDAP remote: bind failed %s %s
+LDAP local: search ldap_result %s
+LDAP local: search ldap_parse_result %s
+LDAP remote: search failed %s %s
+There are more than %d entries
+LDAP local: ldap_search_ext %s
+LDAP local: Cannot connect to %s, %s
+Failed sending Gopher request
+CONNECT %s HTTP/%s
+Proxy CONNECT aborted
+chunk reading DONE
+%zd bytes of chunk left
+CONNECT responded chunked
+TUNNEL_STATE switched to: %d
+Connect me again please
+Establish HTTP proxy tunnel to %s:%hu
+Proxy CONNECT aborted due to timeout
+Proxy CONNECT aborted due to select/poll error
+Proxy CONNECT connection closed
+Read %zd bytes of chunk, continue
+Ignore %ld bytes of response-body
+Proxy CONNECT followed by %zd bytes of opaque data. Data ignored (known bug #39)
+Received HTTP code %d from proxy after CONNECT
+Proxy replied OK to CONNECT request
+Failed sending CONNECT to proxy
+Could not resolve %s: %s
+init_resolve_thread() failed for %s; %s
+getaddrinfo() failed for %s:%d; %s
+%sAuthorization: NTLM %s
+NTLM handshake rejected
+NTLM handshake failure (internal error)
+/usr/bin/ntlm_auth
+Could not fork. errno %d: %s
+--use-cached-creds
+ntlmssp-client-1
+--helper-protocol
+%sAuthorization: %s
+Could not access ntlm_auth: %s errno %d: %s
+Could not open socket pair. errno %d: %s
+Could not redirect child stdin. errno %d: %s
+Could not redirect child stdout. errno %d: %s
+Could not execl(). errno %d: %s
+KGS!@#$%NTLM handshake failure (empty type-2 message)
+NTLM handshake failure (bad type-2 message)
+NTLM handshake failure (bad type-2 message). Target Info Offset Len is set incorrect by the peer
+%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%s%s
+gethostname() failed, continuing without!
+%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c
+user + domain + host name too big
+%08x%08x%08x%08x
+%s:%s:%08x:%s:%s:%s
+%s, opaque="%s"
+%s, algorithm="%s"
+%s %02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x
+username="%s",realm="%s",nonce="%s",cnonce="%s",nc="%s",digest-uri="%s",response=%s,qop=%s
+d41d8cd98f00b204e9800998ecf8427e
+username="%s", realm="%s", nonce="%s", uri="%s", cnonce="%s", nc=%08x, qop=%s, response="%s"
+username="%s", realm="%s", nonce="%s", uri="%s", response="%s"
+Unsupported SASL authentication mechanism
+Server %s is blacklisted
+Conn: %ld (%p) Receive pipe weight: (%ld/%zu), penalized: %s
+Site %s:%d is pipeline blacklisted
+1.2.840.10040.4.1
+%2d Subject: %s
+   Version: %lu (0x%lx)
+   Serial Number: %s
+Signature Algorithm
+   Signature Algorithm: %s
+   Start Date: %s
+   Expire Date: %s
+Public Key Algorithm
+   Public Key Algorithm: %s
+   RSA Public Key (%lu bits)
+   Signature: %s
+-----BEGIN CERTIFICATE-----
+-----END CERTIFICATE-----
+1.2.840.10040.4.3
+1.2.840.10045.2.1
+1.2.840.10045.3.0.1
+1.2.840.10045.4.1
+ecdsa-with-SHA1
+1.2.840.10046.2.1
+1.2.840.113549.1.1.1
+1.2.840.113549.1.1.2
+md2WithRSAEncryption
+1.2.840.113549.1.1.4
+md5WithRSAEncryption
+1.2.840.113549.1.1.5
+sha1WithRSAEncryption
+1.2.840.113549.1.1.10
+1.2.840.113549.1.1.14
+sha224WithRSAEncryption
+1.2.840.113549.1.1.11
+sha256WithRSAEncryption
+1.2.840.113549.1.1.12
+sha384WithRSAEncryption
+1.2.840.113549.1.1.13
+sha512WithRSAEncryption
+1.2.840.113549.2.2
+1.2.840.113549.2.5
+generationQualifier
+X500UniqueIdentifier
+1.2.840.113549.1.9.1
+basicConstraints
+2.16.840.1.101.3.4.2.4
+2.16.840.1.101.3.4.2.1
+2.16.840.1.101.3.4.2.2
+2.16.840.1.101.3.4.2.3
+%u%.2s-%.2s-%.2s %.2s:%.2s:%.2s %.*s
+%.4s-%.2s-%.2s %.2s:%.2s:%c%c%s%.*s%s%.*s
+Invalid input packet
+gss_import_name() failed: 
+gss_display_name() failed: 
+gss_unwrap() failed: 
+gss_wrap() failed: 
+GSSAPI handshake failure (empty challenge message)
+GSSAPI handshake failure (empty security message)
+gss_inquire_context() failed: 
+GSSAPI handshake failure (invalid security data)
+GSSAPI handshake failure (invalid security layer)
+WARNING: Using weak random seed
+-----BEGIN PUBLIC KEY-----
+-----END PUBLIC KEY-----
+%b %d %H:%M:%S %Y GMT
+	start date: %s
+	expire date: %s
+	common name: %s
+NSS: PK11 slot not found: %s
+Server certificate:
+Unknown cipher in list: %s
+Unable to initialize NSS
+SSL write: error %d (%s)
+SSL read: errno %d (%s)
+NSS error %d (%s)
+PEM Token #1:%s
+library=%s name=PEM
+Unable to load certificate %s
+SSL connection using %s
+rsa_rc4_128_md5
+fortezza_rc4_128_sha
+dhe_dss_aes_128_cbc_sha
+dhe_dss_aes_256_cbc_sha
+dhe_rsa_aes_128_cbc_sha
+dhe_rsa_aes_256_cbc_sha
+ecdh_ecdsa_null_sha
+ecdh_ecdsa_rc4_128_sha
+ecdh_ecdsa_3des_sha
+ecdh_ecdsa_aes_128_sha
+ecdh_ecdsa_aes_256_sha
+ecdhe_ecdsa_null_sha
+ecdhe_ecdsa_rc4_128_sha
+ecdhe_ecdsa_3des_sha
+ecdhe_ecdsa_aes_128_sha
+ecdhe_ecdsa_aes_256_sha
+ecdh_rsa_null_sha
+ecdh_rsa_128_sha
+ecdh_rsa_3des_sha
+ecdh_rsa_aes_128_sha
+ecdh_rsa_aes_256_sha
+ecdhe_rsa_rc4_128_sha
+ecdhe_rsa_3des_sha
+ecdhe_rsa_aes_128_sha
+ecdhe_rsa_aes_256_sha
+ecdh_anon_null_sha
+ecdh_anon_rc4_128sha
+ecdh_anon_3des_sha
+ecdh_anon_aes_128_sha
+ecdh_anon_aes_256_sha
+rsa_null_sha_256
+dhe_rsa_aes_256_cbc_sha_256
+ecdhe_rsa_aes_128_cbc_sha_256
+dhe_dss_aes_128_gcm_sha_256
+ecdhe_rsa_aes_128_gcm_sha_256
+ecdh_rsa_aes_128_gcm_sha_256
+NSS: CKA_VALUE not found in PK11 generic object
+NSS: client certificate from file not found
+NSS: private key from file not found
+NSS: client certificate from file
+NSS: client certificate not found (nickname not specified)
+NSS: client certificate not found: %s
+NSS: private key not found for certificate: %s
+NSS: using client certificate: %s
+cipher-suite not supported by NSS: %s
+warning: certificate file name "%s" handled as nickname; please use "./%s" to force file name
+Initializing NSS with certpath: %s
+Unable to initialize NSS database
+Initializing NSS with certpath: none
+skipping SSL peer certificate verification
+WARNING: failed to load NSS PEM library %s. Using OpenSSL PEM certificates will not work.
+warning: failed to set SSL_CBC_RANDOM_IV = %d
+warning: ignoring value of ssl.verifyhost
+failed to load '%s' from CURLOPT_CAPATH
+warning: CURLOPT_CAPATH not a directory (%s)
+Unable to load client key: Incorrect password
+unable to load client cert: %d (%s)
+unable to load client key: %d (%s)
+timed out before SSL handshake
+SSL certificate issuer check failed
+SSL certificate issuer check ok
+pinned public key verified successfully!
+failed to verify pinned public key
+unable to initialize NSS, curl_global_init() should have been called with CURL_GLOBAL_SSL or CURL_GLOBAL_ALL
+PK11_GenerateRandom() failed, calling abort()...
+ecdhe_ecdsa_aes_128_cbc_sha_256
+ecdhe_ecdsa_aes_128_gcm_sha_256
+ecdh_ecdsa_aes_128_gcm_sha_256
+libcurl.so.4.3.0.debug
+.note.gnu.build-id
