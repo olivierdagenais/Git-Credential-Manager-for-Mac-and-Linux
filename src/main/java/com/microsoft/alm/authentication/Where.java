@@ -249,4 +249,17 @@ public class Where
         path.set(null);
         return false;
     }
+
+    public static File git()
+    {
+        final AtomicReference<String> path = new AtomicReference<String>();
+        if (app("git", path))
+        {
+            return new File(path.get());
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
