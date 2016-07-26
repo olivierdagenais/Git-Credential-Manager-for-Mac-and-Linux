@@ -359,7 +359,7 @@ public class Where
         return result;
     }
 
-    static File libcurl(final TestableProcessFactory processFactory, final File gitHttpFetch)
+    public static File libcurl(final TestableProcessFactory processFactory, final File gitHttpFetch)
     {
         final String gitHttpFetchPath = gitHttpFetch.getAbsolutePath();
         InputStream stdOut = null;
