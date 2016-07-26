@@ -305,7 +305,7 @@ public class Where
         return result;
     }
 
-    static Version determineLibCurlVersion(final TestableProcessFactory processFactory, final File libcurl)
+    public static Version determineLibCurlVersion(final TestableProcessFactory processFactory, final File libcurl)
     {
         final String libcurlPath = libcurl.getAbsolutePath();
         InputStream stdOut = null;
