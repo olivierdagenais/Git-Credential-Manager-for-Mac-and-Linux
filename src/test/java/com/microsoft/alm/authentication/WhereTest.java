@@ -99,6 +99,29 @@ public class WhereTest
         verify(existenceChecker, times(3)).call(anyString());
     }
 
+    @Test public void determineLibCurlVersion_Fedora() throws Exception
+    {
+        final Class<? extends WhereTest> me = this.getClass();
+        final InputStream inputStream = me.getResourceAsStream("strings_libcurl.txt");
+        final String input = IOHelper.readToString(inputStream);
+        inputStream.close();
+        final String libCurlPath = "/lib64/libcurl.so.4";
+        final TestableProcess process = new TestProcess(input + "\n");
+        final TestableProcessFactory processFactory = new TestableProcessFactory()
+        {
+            @Override public TestableProcess create(final String... strings) throws IOException
+            {
+                Assert.assertEquals("strings", strings[0]);
+                return process;
+            }
+        };
+        final File libCurl = new File(libCurlPath);
+
+        final Version actual = Where.determineLibCurlVersion(processFactory, libCurl);
+
+        assertVersionEquals(7, 40, 0, actual);
+    }
+
     @Test public void findCurlVersionInStrings_Fedora() throws Exception
     {
         final Class<? extends WhereTest> me = this.getClass();

@@ -305,6 +305,38 @@ public class Where
         return result;
     }
 
+    static Version determineLibCurlVersion(final TestableProcessFactory processFactory, final File libcurl)
+    {
+        final String libcurlPath = libcurl.getAbsolutePath();
+        InputStream stdOut = null;
+        InputStreamReader reader = null;
+        BufferedReader br = null;
+        try
+        {
+            final TestableProcess process = processFactory.create("strings", "--bytes=" + CLIENT_LIBCURL_PREFIX_LENGTH, libcurlPath);
+            stdOut = process.getInputStream();
+            reader = new InputStreamReader(stdOut);
+            br = new BufferedReader(reader);
+            final String versionString = findCurlVersionInStrings(br);
+            process.waitFor();
+            return parseLibCurlVersion(versionString);
+        }
+        catch (final InterruptedException e)
+        {
+            throw new Error(e);
+        }
+        catch (final IOException e)
+        {
+            throw new Error(e);
+        }
+        finally
+        {
+            IOHelper.closeQuietly(br);
+            IOHelper.closeQuietly(reader);
+            IOHelper.closeQuietly(stdOut);
+        }
+    }
+
     private static final Pattern LIBCURL_PATTERN =
         Pattern.compile("\\s(?:libcurl[^ ]+) => ([^ ]+) \\(.+\\)");
 
