@@ -11,6 +11,9 @@ import java.net.URI;
 
 public class VsTeam
 {
+    private static final String X_TFS_PROCESS_ID = "X-TFS-ProcessId";
+    private static final String X_VSS_RESOURCE_TENANT = "X-VSS-ResourceTenant";
+
     public static boolean looksLikeTfsGitPath(final String uriPath)
     {
         final String[] parts = uriPath.split("/");
@@ -36,6 +39,16 @@ public class VsTeam
         if (!looksLikeTfsGitPath(repoUriPath))
         {
             return false;
+        }
+
+        final HttpClient client = new HttpClient(Global.getUserAgent());
+        final HttpURLConnection response = client.head(repoUri);
+        final String tfsProcessId = response.getHeaderField(X_TFS_PROCESS_ID);
+        if (tfsProcessId != null)
+        {
+            // it could still be Team Services; if so, it will have the X-VSS-ResourceTenant header
+            final String resourceTenant = response.getHeaderField(X_VSS_RESOURCE_TENANT);
+            return resourceTenant == null;
         }
         return false;
     }
