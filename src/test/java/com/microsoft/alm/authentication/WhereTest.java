@@ -3,11 +3,20 @@
 
 package com.microsoft.alm.authentication;
 
+import com.microsoft.alm.gitcredentialmanager.TestProcess;
 import com.microsoft.alm.helpers.Func;
+import com.microsoft.alm.helpers.IOHelper;
 import com.microsoft.alm.helpers.StringHelper;
+import com.microsoft.alm.oauth2.useragent.subprocess.TestableProcess;
+import com.microsoft.alm.oauth2.useragent.subprocess.TestableProcessFactory;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.concurrent.atomic.AtomicReference;
 
 import static org.mockito.Matchers.anyString;
@@ -87,5 +96,43 @@ public class WhereTest
 
         Assert.assertEquals(false, result);
         verify(existenceChecker, times(3)).call(anyString());
+    }
+
+    @Test public void findLibCurlInLdd_Fedora() throws Exception
+    {
+        final Class<? extends WhereTest> me = this.getClass();
+        final BufferedReader br = new BufferedReader(new InputStreamReader(me.getResourceAsStream("ldd_git-http-fetch.txt")));
+        try
+        {
+            final String actual = Where.findLibCurlInLdd(br);
+            Assert.assertEquals("/lib64/libcurl.so.4", actual);
+        }
+        finally
+        {
+            br.close();
+        }
+    }
+
+    @Test public void libcurl_fedora() throws Exception
+    {
+        final Class<? extends WhereTest> me = this.getClass();
+        final InputStream inputStream = me.getResourceAsStream("ldd_git-http-fetch.txt");
+        final String input = IOHelper.readToString(inputStream);
+        inputStream.close();
+        final String gitHttpFetchPath = "/usr/libexec/git-core/git-http-fetch";
+        final TestableProcess process = new TestProcess(input + "\n");
+        final TestableProcessFactory processFactory = new TestableProcessFactory()
+        {
+            @Override public TestableProcess create(final String... strings) throws IOException
+            {
+                Assert.assertEquals("ldd", strings[0]);
+                return process;
+            }
+        };
+        final File gitHttpFetch = new File(gitHttpFetchPath);
+
+        final File actual = Where.libcurl(processFactory, gitHttpFetch);
+        
+        Assert.assertEquals(new File("/lib64/libcurl.so.4"), actual);
     }
 }

@@ -6,15 +6,18 @@ package com.microsoft.alm.authentication;
 import com.microsoft.alm.helpers.Environment;
 import com.microsoft.alm.helpers.Func;
 import com.microsoft.alm.helpers.IOHelper;
-import com.microsoft.alm.helpers.IteratorExtensions;
 import com.microsoft.alm.helpers.ObjectExtensions;
 import com.microsoft.alm.helpers.Path;
 import com.microsoft.alm.helpers.StringHelper;
+import com.microsoft.alm.oauth2.useragent.subprocess.TestableProcess;
+import com.microsoft.alm.oauth2.useragent.subprocess.TestableProcessFactory;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -273,5 +276,59 @@ public class Where
         final File gitCore = new File(libexec, "git-core");
         final File result = new File(gitCore, "git-http-fetch");
         return result;
+    }
+
+    private static final Pattern LIBCURL_PATTERN =
+        Pattern.compile("\\s(?:libcurl[^ ]+) => ([^ ]+) \\(.+\\)");
+
+    static String findLibCurlInLdd(final BufferedReader br) throws IOException
+    {
+        String line;
+        String result = null;
+        while ((line = br.readLine()) != null)
+        {
+            if (result != null || StringHelper.isNullOrWhiteSpace(line))
+                continue;
+
+            final Matcher matcher = LIBCURL_PATTERN.matcher(line);
+            if (matcher.matches())
+            {
+                final String pathToLibCurl = matcher.group(1);
+                result = pathToLibCurl;
+            }
+        }
+        return result;
+    }
+
+    static File libcurl(final TestableProcessFactory processFactory, final File gitHttpFetch)
+    {
+        final String gitHttpFetchPath = gitHttpFetch.getAbsolutePath();
+        InputStream stdOut = null;
+        InputStreamReader reader = null;
+        BufferedReader br = null;
+        try
+        {
+            final TestableProcess process = processFactory.create("ldd", gitHttpFetchPath);
+            stdOut = process.getInputStream();
+            reader = new InputStreamReader(stdOut);
+            br = new BufferedReader(reader);
+            final String pathToLibCurl = findLibCurlInLdd(br);
+            process.waitFor();
+            return new File(pathToLibCurl);
+        }
+        catch (final InterruptedException e)
+        {
+            throw new Error(e);
+        }
+        catch (final IOException e)
+        {
+            throw new Error(e);
+        }
+        finally
+        {
+            IOHelper.closeQuietly(br);
+            IOHelper.closeQuietly(reader);
+            IOHelper.closeQuietly(stdOut);
+        }
     }
 }
