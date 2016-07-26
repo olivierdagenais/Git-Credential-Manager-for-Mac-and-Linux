@@ -262,4 +262,16 @@ public class Where
             return null;
         }
     }
+
+    public static File git_http_fetch()
+    {
+        final File gitBinary = git();
+        assert gitBinary != null;
+        final File binDirectory = gitBinary.getParentFile();
+        final File binParent = binDirectory.getParentFile();
+        final File libexec = new File(binParent, "libexec");
+        final File gitCore = new File(libexec, "git-core");
+        final File result = new File(gitCore, "git-http-fetch");
+        return result;
+    }
 }
