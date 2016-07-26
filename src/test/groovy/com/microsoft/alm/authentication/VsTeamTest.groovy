@@ -36,4 +36,14 @@ public class VsTeamTest {
         assert !actual
     }
 
+
+    @Test public void isTeamFoundationServer_noUnderscoreGitInPath() throws Exception
+    {
+        final input = URI.create("https://github.com/Microsoft/Git-Credential-Manager-for-Mac-and-Linux.git");
+
+        final boolean actual = VsTeam.isTeamFoundationServer(input);
+
+        assert !actual
+    }
+
 }

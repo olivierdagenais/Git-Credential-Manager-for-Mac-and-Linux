@@ -29,4 +29,14 @@ public class VsTeam
         }
         return result;
     }
+
+    public static boolean isTeamFoundationServer(final URI repoUri) throws IOException
+    {
+        final String repoUriPath = repoUri.getPath();
+        if (!looksLikeTfsGitPath(repoUriPath))
+        {
+            return false;
+        }
+        return false;
+    }
 }
