@@ -9,6 +9,7 @@ import com.microsoft.alm.helpers.IOHelper;
 import com.microsoft.alm.helpers.ObjectExtensions;
 import com.microsoft.alm.helpers.Path;
 import com.microsoft.alm.helpers.StringHelper;
+import com.microsoft.alm.oauth2.useragent.Version;
 import com.microsoft.alm.oauth2.useragent.subprocess.TestableProcess;
 import com.microsoft.alm.oauth2.useragent.subprocess.TestableProcessFactory;
 
@@ -295,6 +296,12 @@ public class Where
                 result = line.substring(CLIENT_LIBCURL_PREFIX_LENGTH);
             }
         }
+        return result;
+    }
+
+    static Version parseLibCurlVersion(final String versionString)
+    {
+        final Version result = Version.parseVersion(versionString);
         return result;
     }
 

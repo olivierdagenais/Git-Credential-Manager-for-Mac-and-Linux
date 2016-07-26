@@ -7,6 +7,7 @@ import com.microsoft.alm.gitcredentialmanager.TestProcess;
 import com.microsoft.alm.helpers.Func;
 import com.microsoft.alm.helpers.IOHelper;
 import com.microsoft.alm.helpers.StringHelper;
+import com.microsoft.alm.oauth2.useragent.Version;
 import com.microsoft.alm.oauth2.useragent.subprocess.TestableProcess;
 import com.microsoft.alm.oauth2.useragent.subprocess.TestableProcessFactory;
 import org.junit.Assert;
@@ -111,6 +112,27 @@ public class WhereTest
         {
             br.close();
         }
+    }
+
+    @Test public void parseLibCurlVersion_selfBuilt() throws Exception
+    {
+        final Version actual = Where.parseLibCurlVersion("7.48.0-DEV");
+
+        assertVersionEquals(7, 48, 0, actual);
+    }
+
+    @Test public void parseLibCurlVersion_rhel() throws Exception
+    {
+        final Version actual = Where.parseLibCurlVersion("7.19.7");
+
+        assertVersionEquals(7, 19, 7, actual);
+    }
+
+    private static void assertVersionEquals(final int expectedMajor, final int expectedMinor, final int expectedPatch, final Version actual)
+    {
+        Assert.assertEquals(expectedMajor, actual.getMajor());
+        Assert.assertEquals(expectedMinor, actual.getMinor());
+        Assert.assertEquals(expectedPatch, actual.getPatch());
     }
 
     @Test public void findLibCurlInLdd_Fedora() throws Exception
