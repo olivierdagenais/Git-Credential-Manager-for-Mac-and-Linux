@@ -3,10 +3,16 @@
 
 package com.microsoft.alm.authentication;
 
+import com.microsoft.alm.helpers.Action;
 import com.microsoft.alm.helpers.HttpClient;
+import com.microsoft.alm.helpers.IOHelper;
+import com.microsoft.alm.secret.Credential;
 
+import java.io.Closeable;
 import java.io.IOException;
+import java.net.Authenticator;
 import java.net.HttpURLConnection;
+import java.net.PasswordAuthentication;
 import java.net.URI;
 
 public class VsTeam
@@ -51,5 +57,50 @@ public class VsTeam
             return resourceTenant == null;
         }
         return false;
+    }
+
+    public static class PasswordAuthenticator extends Authenticator implements Closeable
+    {
+        private final String userName;
+        private final char[] password;
+
+        public PasswordAuthenticator(final String userName, final char[] password)
+        {
+            this.userName = userName;
+            this.password = password;
+        }
+
+        @Override
+        protected PasswordAuthentication getPasswordAuthentication()
+        {
+            return new PasswordAuthentication(this.userName, this.password);
+        }
+
+        @Override
+        public void close() throws IOException
+        {
+            for (int i = 0; i < password.length; i++)
+            {
+                password[i] = '\0';
+            }
+        }
+    }
+
+    public static boolean areCredentialsValid(final URI repoUri, final Credential credential) throws IOException
+    {
+        final PasswordAuthenticator authenticator = new PasswordAuthenticator(credential.Username, credential.Password.toCharArray());
+        Authenticator.setDefault(authenticator);
+        try
+        {
+            final HttpClient client = new HttpClient(Global.getUserAgent());
+            final HttpURLConnection response = client.get(repoUri);
+            final int responseCode = response.getResponseCode();
+            return responseCode == HttpURLConnection.HTTP_OK;
+        }
+        finally
+        {
+            IOHelper.closeQuietly(authenticator);
+            Authenticator.setDefault(null);
+        }
     }
 }

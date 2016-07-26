@@ -4,7 +4,9 @@
 package com.microsoft.alm.authentication
 
 import com.github.tomakehurst.wiremock.junit.WireMockRule
+import com.microsoft.alm.secret.Credential
 import groovy.transform.CompileStatic
+import org.junit.Ignore
 import org.junit.Rule
 import org.junit.Test
 
@@ -98,5 +100,19 @@ public class VsTeamTest {
         final boolean actual = VsTeam.isTeamFoundationServer(uri);
 
         assert !actual
+    }
+
+    @Ignore("Must be run manually after setting some properties")
+    @Test
+    public void areCredentialsValid_manual() {
+        final repoUriString = System.getProperty("repoUri");
+        final repoUri = new URI(repoUriString);
+        final userName = System.getProperty("userName");
+        final password = System.getProperty("password");
+        final credential = new Credential(userName, password);
+
+        final actual = VsTeam.areCredentialsValid(repoUri, credential)
+
+        assert actual
     }
 }
