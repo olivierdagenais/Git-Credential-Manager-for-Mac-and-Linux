@@ -53,6 +53,12 @@ public class VsTeam
         return false;
     }
 
+    public boolean looksLikeTfsGitPath()
+    {
+        final String repoUriPath = repoUri.getPath();
+        return looksLikeTfsGitPath(repoUriPath);
+    }
+
     public boolean offersNtlm()
     {
         return hasValue(WWW_AUTHENTICATE, NTLM);
