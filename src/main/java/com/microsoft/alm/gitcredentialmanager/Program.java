@@ -215,59 +215,64 @@ public class Program
             standardOut.println("It should look something like this:");
             standardOut.println("http://tfs.example.com:8080/tfs/DefaultCollection/MyProject/_git/MyRepo");
             final String repoUriString = br.readLine();
-            final URI repoUri;
-            try
-            {
-                repoUri = new URI(repoUriString);
-            }
-            catch (final URISyntaxException e)
-            {
-                final String template = "The string '%s' did not parse as a valid URI.";
-                final String message = String.format(template, repoUriString);
-                standardOut.println(message);
-                return null;
-            }
-
-            final VsTeam vsTeam = new VsTeam(repoUri);
-            // TODO: dump all headers with Trace.writeLine();
-
-            final boolean teamFoundationServer = vsTeam.isTeamFoundationServer();
-            if (teamFoundationServer)
-            {
-                standardOut.println("That appears to be a TFS server.");
-            }
-            else
-            {
-                standardOut.println("That DOES NOT appear to be a TFS server, aborting.");
-                return null;
-            }
-
-            final boolean looksLikeTfsGitPath = vsTeam.looksLikeTfsGitPath();
-            if (looksLikeTfsGitPath)
-            {
-                standardOut.println("That does look like a TFS Git repository path.");
-            }
-            else
-            {
-                standardOut.println("That DOES NOT look like a TFS Git repository path.");
-            }
-
-            standardOut.println();
-            standardOut.println("Now let's check the authentication options offered by the server:");
-            if (vsTeam.offersNtlm())
-            {
-                standardOut.println("NTLM");
-            }
-            if (vsTeam.offersNegotiate())
-            {
-                standardOut.println("Negotiate");
-            }
-
-            standardOut.println();
-            standardOut.println("End of 'CheckTfs' mode");
-            return null;
+            return checkTfs(repoUriString);
         }
     };
+
+    protected Void checkTfs(final String repoUriString)
+    {
+        final URI repoUri;
+        try
+        {
+            repoUri = new URI(repoUriString);
+        }
+        catch (final URISyntaxException e)
+        {
+            final String template = "The string '%s' did not parse as a valid URI.";
+            final String message = String.format(template, repoUriString);
+            standardOut.println(message);
+            return null;
+        }
+
+        final VsTeam vsTeam = new VsTeam(repoUri);
+        // TODO: dump all headers with Trace.writeLine();
+
+        final boolean teamFoundationServer = vsTeam.isTeamFoundationServer();
+        if (teamFoundationServer)
+        {
+            standardOut.println("That appears to be a TFS server.");
+        }
+        else
+        {
+            standardOut.println("That DOES NOT appear to be a TFS server, aborting.");
+            return null;
+        }
+
+        final boolean looksLikeTfsGitPath = vsTeam.looksLikeTfsGitPath();
+        if (looksLikeTfsGitPath)
+        {
+            standardOut.println("That does look like a TFS Git repository path.");
+        }
+        else
+        {
+            standardOut.println("That DOES NOT look like a TFS Git repository path.");
+        }
+
+        standardOut.println();
+        standardOut.println("Now let's check the authentication options offered by the server:");
+        if (vsTeam.offersNtlm())
+        {
+            standardOut.println("NTLM");
+        }
+        if (vsTeam.offersNegotiate())
+        {
+            standardOut.println("Negotiate");
+        }
+
+        standardOut.println();
+        standardOut.println("End of 'CheckTfs' mode");
+        return null;
+    }
 
     public Program(final InputStream standardIn, final PrintStream standardOut, final IComponentFactory componentFactory)
     {
