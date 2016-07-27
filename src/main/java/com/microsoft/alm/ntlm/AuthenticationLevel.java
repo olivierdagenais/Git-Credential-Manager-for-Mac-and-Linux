@@ -5,7 +5,7 @@ package com.microsoft.alm.ntlm;
 
 /**
  * LAN Manager authentication level
- * {@see https://technet.microsoft.com/en-us/library/jj852207(v=ws.10).aspx}
+ * See https://technet.microsoft.com/en-us/library/jj852207(v=ws.10).aspx
  */
 public enum AuthenticationLevel
 {
