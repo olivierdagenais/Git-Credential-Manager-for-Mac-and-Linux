@@ -14,6 +14,7 @@ import com.microsoft.alm.authentication.IVsoAadAuthentication;
 import com.microsoft.alm.authentication.IVsoMsaAuthentication;
 import com.microsoft.alm.authentication.SecretStore;
 import com.microsoft.alm.authentication.SecretStoreAdapter;
+import com.microsoft.alm.authentication.VsTeam;
 import com.microsoft.alm.authentication.VsoAadAuthentication;
 import com.microsoft.alm.authentication.VsoMsaAuthentication;
 import com.microsoft.alm.authentication.Where;
@@ -48,6 +49,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLDecoder;
@@ -179,6 +181,7 @@ public class Program
         // list of arg => method associations (case-insensitive)
         final Map<String, Callable<Void>> actions = new TreeMap<String, Callable<Void>>(String.CASE_INSENSITIVE_ORDER);
         actions.put("approve", Store);
+        actions.put("checkTfs", CheckTfs);
         actions.put("erase", Erase);
         actions.put("fill", Get);
         actions.put("get", Get);
@@ -196,6 +199,75 @@ public class Program
             }
         }
     }
+
+    private final Callable<Void> CheckTfs = new Callable<Void>()
+    {
+        @Override
+        public Void call() throws Exception
+        {
+            final InputStreamReader reader = new InputStreamReader(standardIn);
+            final BufferedReader br = new BufferedReader(reader);
+
+            printVersion();
+            standardOut.println("Running in 'CheckTfs' mode to query a TFS server for details.");
+            standardOut.println();
+            standardOut.println("What's the URL to your Git repository hosted in TFS?");
+            standardOut.println("It should look something like this:");
+            standardOut.println("http://tfs.example.com:8080/tfs/DefaultCollection/MyProject/_git/MyRepo");
+            final String repoUriString = br.readLine();
+            final URI repoUri;
+            try
+            {
+                repoUri = new URI(repoUriString);
+            }
+            catch (final URISyntaxException e)
+            {
+                final String template = "The string '%s' did not parse as a valid URI.";
+                final String message = String.format(template, repoUriString);
+                standardOut.println(message);
+                return null;
+            }
+
+            final VsTeam vsTeam = new VsTeam(repoUri);
+            // TODO: dump all headers with Trace.writeLine();
+
+            final boolean teamFoundationServer = vsTeam.isTeamFoundationServer();
+            if (teamFoundationServer)
+            {
+                standardOut.println("That appears to be a TFS server.");
+            }
+            else
+            {
+                standardOut.println("That DOES NOT appear to be a TFS server, aborting.");
+                return null;
+            }
+
+            final boolean looksLikeTfsGitPath = vsTeam.looksLikeTfsGitPath();
+            if (looksLikeTfsGitPath)
+            {
+                standardOut.println("That does look like a TFS Git repository path.");
+            }
+            else
+            {
+                standardOut.println("That DOES NOT look like a TFS Git repository path.");
+            }
+
+            standardOut.println();
+            standardOut.println("Now let's check the authentication options offered by the server:");
+            if (vsTeam.offersNtlm())
+            {
+                standardOut.println("NTLM");
+            }
+            if (vsTeam.offersNegotiate())
+            {
+                standardOut.println("Negotiate");
+            }
+
+            standardOut.println();
+            standardOut.println("End of 'CheckTfs' mode");
+            return null;
+        }
+    };
 
     public Program(final InputStream standardIn, final PrintStream standardOut, final IComponentFactory componentFactory)
     {

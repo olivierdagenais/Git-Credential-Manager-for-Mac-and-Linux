@@ -58,6 +58,22 @@ public class ProgramTest
         }
     }
 
+    @Ignore("This test requires user intervention and must be run manually.")
+    @Test public void checkTfs() throws Exception
+    {
+        Trace.getListeners().add(System.err);
+        final String repoUri = System.getProperty("repoUri");
+        final String input = repoUri + "\n";
+        final InputStream inputStream = new ByteArrayInputStream(input.getBytes("UTF-8"));
+        final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        final Program program = new Program(inputStream, new PrintStream(outputStream), new Program.ComponentFactory());
+
+        program.innerMain(new String[]{"checkTfs"});
+
+        final String actualOutput = outputStream.toString("UTF-8");
+        Assert.assertNotNull(actualOutput);
+    }
+
     @Test public void isValidGitVersion_happy()
     {
         // greater version
