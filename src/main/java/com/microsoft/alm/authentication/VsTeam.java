@@ -45,11 +45,6 @@ public class VsTeam
 
     public boolean isTeamFoundationServer()
     {
-        final String repoUriPath = repoUri.getPath();
-        if (!looksLikeTfsGitPath(repoUriPath))
-        {
-            return false;
-        }
         if (hasValue(X_TFS_PROCESS_ID))
         {
             // it could still be Team Services; if so, it will have the X-VSS-ResourceTenant header

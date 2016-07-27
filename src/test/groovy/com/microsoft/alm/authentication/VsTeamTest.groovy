@@ -57,11 +57,18 @@ public class VsTeamTest {
     }
 
 
-    @Test public void isTeamFoundationServer_noUnderscoreGitInPath() throws Exception
+    @Test public void isTeamFoundationServer_gitHub() throws Exception
     {
-        final input = URI.create("https://github.com/Microsoft/Git-Credential-Manager-for-Mac-and-Linux.git");
+        final port = wireMockRule.port();
+        final path = "/Microsoft/Git-Credential-Manager-for-Mac-and-Linux.git"
+        final uri = new URI(PROTOCOL, null, host, port, path, null, null)
+        stubFor(head(urlEqualTo(path))
+            .willReturn(aResponse()
+                .withStatus(200)
+            )
+        );
 
-        final boolean actual = VsTeam.isTeamFoundationServer(input);
+        final boolean actual = VsTeam.isTeamFoundationServer(uri);
 
         assert !actual
     }
