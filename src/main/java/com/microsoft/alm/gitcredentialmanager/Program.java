@@ -200,21 +200,32 @@ public class Program
         }
     }
 
+    protected BufferedReader header(final String header)
+    {
+        final InputStreamReader reader = new InputStreamReader(standardIn);
+        final BufferedReader br = new BufferedReader(reader);
+
+        printVersion();
+        standardOut.println(header);
+        return br;
+    }
+
+    protected String promptForTfsServer(final BufferedReader br) throws IOException
+    {
+        standardOut.println();
+        standardOut.println("What's the URL to your Git repository hosted in TFS?");
+        standardOut.println("It should look something like this:");
+        standardOut.println("http://tfs.example.com:8080/tfs/DefaultCollection/MyProject/_git/MyRepo");
+        return br.readLine();
+    }
+
     private final Callable<Void> CheckTfs = new Callable<Void>()
     {
         @Override
         public Void call() throws Exception
         {
-            final InputStreamReader reader = new InputStreamReader(standardIn);
-            final BufferedReader br = new BufferedReader(reader);
-
-            printVersion();
-            standardOut.println("Running in 'CheckTfs' mode to query a TFS server for details.");
-            standardOut.println();
-            standardOut.println("What's the URL to your Git repository hosted in TFS?");
-            standardOut.println("It should look something like this:");
-            standardOut.println("http://tfs.example.com:8080/tfs/DefaultCollection/MyProject/_git/MyRepo");
-            final String repoUriString = br.readLine();
+            final BufferedReader br = header("Running in 'CheckTfs' mode to query a TFS server for details.");
+            final String repoUriString = promptForTfsServer(br);
             return checkTfs(repoUriString);
         }
     };
