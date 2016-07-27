@@ -118,21 +118,31 @@ public class VsTeam
         }
     }
 
-    public static boolean areCredentialsValid(final URI repoUri, final Credential credential) throws IOException
+    public boolean areCredentialsValid(final Credential credential)
     {
         final PasswordAuthenticator authenticator = new PasswordAuthenticator(credential.Username, credential.Password.toCharArray());
         Authenticator.setDefault(authenticator);
         try
         {
-            final HttpClient client = new HttpClient(Global.getUserAgent());
             final HttpURLConnection response = client.get(repoUri);
             final int responseCode = response.getResponseCode();
             return responseCode == HttpURLConnection.HTTP_OK;
+        }
+        catch (final IOException e)
+        {
+            // TODO: maybe we should just return false?
+            throw new Error(e);
         }
         finally
         {
             IOHelper.closeQuietly(authenticator);
             Authenticator.setDefault(null);
         }
+    }
+
+    public static boolean areCredentialsValid(final URI repoUri, final Credential credential)
+    {
+        final VsTeam vsTeam = new VsTeam(repoUri);
+        return vsTeam.areCredentialsValid(credential);
     }
 }
