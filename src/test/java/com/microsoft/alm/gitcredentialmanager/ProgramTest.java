@@ -63,6 +63,7 @@ public class ProgramTest
     {
         Trace.getListeners().add(System.err);
         final String repoUri = System.getProperty("repoUri");
+        Assert.assertNotNull(repoUri);
         final String input = repoUri + "\n";
         final InputStream inputStream = new ByteArrayInputStream(input.getBytes("UTF-8"));
         final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
