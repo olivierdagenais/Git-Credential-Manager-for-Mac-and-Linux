@@ -47,14 +47,18 @@ public class VsTeam
         {
             return false;
         }
-        final List<String> tfsProcessIds = headerFields.get(X_TFS_PROCESS_ID);
-        if (hasValue(tfsProcessIds))
+        if (hasValue(X_TFS_PROCESS_ID))
         {
             // it could still be Team Services; if so, it will have the X-VSS-ResourceTenant header
-            final List<String> resourceTenants = headerFields.get(X_VSS_RESOURCE_TENANT);
-            return !hasValue(resourceTenants);
+            return !hasValue(X_VSS_RESOURCE_TENANT);
         }
         return false;
+    }
+
+    boolean hasValue(final String headerName)
+    {
+        final List<String> headerValues = headerFields.get(headerName);
+        return hasValue(headerValues);
     }
 
     static boolean hasValue(final List<String> headerValues)
