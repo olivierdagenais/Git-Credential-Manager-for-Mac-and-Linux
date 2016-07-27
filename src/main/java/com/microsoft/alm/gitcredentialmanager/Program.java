@@ -232,6 +232,13 @@ public class Program
 
     protected Void checkTfs(final String repoUriString)
     {
+        standardOut.println();
+        standardOut.println("Start of 'CheckTfs' mode");
+
+        final String checkingTemplate = "Checking Git repository URI '%s'.";
+        final String checkingMessage = String.format(checkingTemplate, repoUriString);
+        standardOut.println(checkingMessage);
+
         final URI repoUri;
         try
         {
