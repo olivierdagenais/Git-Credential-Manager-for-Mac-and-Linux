@@ -181,6 +181,8 @@ public class Program
         // list of arg => method associations (case-insensitive)
         final Map<String, Callable<Void>> actions = new TreeMap<String, Callable<Void>>(String.CASE_INSENSITIVE_ORDER);
         actions.put("approve", Store);
+        actions.put("checkCredential", CheckCredentials);
+        actions.put("checkCredentials", CheckCredentials);
         actions.put("checkTfs", CheckTfs);
         actions.put("erase", Erase);
         actions.put("fill", Get);
@@ -217,6 +219,15 @@ public class Program
         standardOut.println("It should look something like this:");
         standardOut.println("http://tfs.example.com:8080/tfs/DefaultCollection/MyProject/_git/MyRepo");
         return br.readLine();
+    }
+
+    static String promptOnTty(final String... args) throws Exception
+    {
+        final DefaultProcessFactory processFactory = new DefaultProcessFactory();
+        final TestableProcess process = processFactory.create(args);
+        final ProcessCoordinator coordinator = new ProcessCoordinator(process);
+        coordinator.waitFor();
+        return coordinator.getStdOut();
     }
 
     private final Callable<Void> CheckTfs = new Callable<Void>()
@@ -289,6 +300,47 @@ public class Program
 
         standardOut.println();
         standardOut.println("End of 'CheckTfs' mode");
+        return null;
+    }
+
+    private final Callable<Void> CheckCredentials = new Callable<Void>()
+    {
+        @Override
+        public Void call() throws Exception
+        {
+            final BufferedReader br = header("Running in 'CheckCredentials' mode to attempt authentication with the JVM's HTTP client.");
+            final String repoUriString = promptForTfsServer(br);
+
+            final String userName = promptOnTty("systemd-ask-password", "--echo", "TFS User name");
+            final String password = promptOnTty("systemd-ask-password", "TFS Password");
+            final Credential credential = new Credential(userName, password);
+
+            return checkCredentials(repoUriString, credential);
+        }
+    };
+
+    private Void checkCredentials(final String repoUriString, final Credential credential)
+    {
+        standardOut.println();
+        standardOut.println("Start of 'CheckCredentials' mode");
+
+        final String checkingTemplate = "Attempting to connect to Git repository '%1$s' as '%2$s'.";
+        final String checkingMessage = String.format(checkingTemplate, repoUriString, credential.Username);
+        standardOut.println(checkingMessage);
+
+        final URI repoUri = URI.create(repoUriString);
+        final VsTeam vsTeam = new VsTeam(repoUri);
+        if (vsTeam.areCredentialsValid(credential))
+        {
+            standardOut.println("Authentication was successful!");
+        }
+        else
+        {
+            standardOut.println("Authentication was NOT successful!");
+        }
+
+        standardOut.println();
+        standardOut.println("End of 'CheckCredentials' mode");
         return null;
     }
 
