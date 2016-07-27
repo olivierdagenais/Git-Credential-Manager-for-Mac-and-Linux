@@ -28,6 +28,7 @@ import com.microsoft.alm.helpers.Path;
 import com.microsoft.alm.helpers.StringHelper;
 import com.microsoft.alm.helpers.Trace;
 import com.microsoft.alm.helpers.UriHelper;
+import com.microsoft.alm.ntlm.AuthenticationLevel;
 import com.microsoft.alm.oauth2.useragent.Provider;
 import com.microsoft.alm.oauth2.useragent.Version;
 import com.microsoft.alm.oauth2.useragent.subprocess.DefaultProcessFactory;
@@ -53,7 +54,6 @@ import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -501,7 +501,9 @@ public class Program
     static void install(final String osName, final String osVersion, final PrintStream standardOut, final List<Provider> providers, final TestableProcessFactory processFactory)
     {
         List<String> missedRequirements = new ArrayList<String>();
-        missedRequirements.addAll(checkGitRequirements(processFactory));
+        // TODO: determine NTLM auth level by sending NEGOTIATE and parsing CHALLENGE
+        final AuthenticationLevel level = AuthenticationLevel.NOT_APPLICABLE;
+        missedRequirements.addAll(checkGitRequirements(processFactory, level));
         missedRequirements.addAll(checkOsRequirements(osName, osVersion));
 
         if (missedRequirements.isEmpty())
@@ -701,10 +703,23 @@ public class Program
      *
      * @return if git requirements are met
      */
-    static List<String> checkGitRequirements(final TestableProcessFactory processFactory)
+    static List<String> checkGitRequirements(final TestableProcessFactory processFactory, final AuthenticationLevel authenticationLevel)
     {
         final String trimmedResponse = fetchGitVersion(processFactory);
-        return isValidGitVersion(trimmedResponse);
+        final List<String> requirements = isValidGitVersion(trimmedResponse);
+        if (requirements.size() == 0 && authenticationLevel == AuthenticationLevel.NTLMv2)
+        {
+            final File gitHttpFetch = Where.git_http_fetch();
+            final File libcurl = Where.libcurl(processFactory, gitHttpFetch);
+            final Version libCurlVersion = Where.determineLibCurlVersion(processFactory, libcurl);
+            final int major = libCurlVersion.getMajor();
+            final int minor = libCurlVersion.getMinor();
+            if ((major < 7) || (major == 7 && minor < 36))
+            {
+                requirements.add("NTLMv2 is in effect, which requires Git be compiled with version 7.36 or better of libcurl");
+            }
+        }
+        return requirements;
     }
 
     static String fetchGitVersion(final TestableProcessFactory processFactory)
