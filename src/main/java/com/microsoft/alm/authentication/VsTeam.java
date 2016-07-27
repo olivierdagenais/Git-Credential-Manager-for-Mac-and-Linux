@@ -18,6 +18,9 @@ import java.util.Map;
 
 public class VsTeam
 {
+    private static final String NEGOTIATE = "Negotiate";
+    private static final String NTLM = "NTLM";
+    private static final String WWW_AUTHENTICATE = "WWW-Authenticate";
     private static final String X_TFS_PROCESS_ID = "X-TFS-ProcessId";
     private static final String X_VSS_RESOURCE_TENANT = "X-VSS-ResourceTenant";
 
@@ -51,6 +54,26 @@ public class VsTeam
         {
             // it could still be Team Services; if so, it will have the X-VSS-ResourceTenant header
             return !hasValue(X_VSS_RESOURCE_TENANT);
+        }
+        return false;
+    }
+
+    public boolean offersNtlm()
+    {
+        return hasValue(WWW_AUTHENTICATE, NTLM);
+    }
+
+    public boolean offersNegotiate()
+    {
+        return hasValue(WWW_AUTHENTICATE, NEGOTIATE);
+    }
+
+    boolean hasValue(final String headerName, final String targetValue)
+    {
+        final List<String> headerValues = headerFields.get(headerName);
+        if (headerValues != null && headerValues.size() > 0)
+        {
+            return headerValues.contains(targetValue);
         }
         return false;
     }
