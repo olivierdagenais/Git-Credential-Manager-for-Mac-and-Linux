@@ -203,6 +203,8 @@ public class VsTeam
         try
         {
             final HttpURLConnection response = client.get(uri);
+            // need to ask for the response code to force the connection to take place
+            response.getResponseCode();
             return response;
         }
         catch (final IOException e)
