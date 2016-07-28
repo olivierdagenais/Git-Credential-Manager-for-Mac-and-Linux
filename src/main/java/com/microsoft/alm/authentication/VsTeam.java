@@ -5,6 +5,7 @@ package com.microsoft.alm.authentication;
 
 import com.microsoft.alm.helpers.HttpClient;
 import com.microsoft.alm.helpers.IOHelper;
+import com.microsoft.alm.helpers.StringHelper;
 import com.microsoft.alm.secret.Credential;
 
 import java.io.Closeable;
@@ -13,6 +14,9 @@ import java.net.Authenticator;
 import java.net.HttpURLConnection;
 import java.net.PasswordAuthentication;
 import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -139,6 +143,47 @@ public class VsTeam
             {
                 password[i] = '\0';
             }
+        }
+    }
+
+    public static URI createHomeUri(final URI uri)
+    {
+        final String uriPath = uri.getPath();
+        final String[] parts = uriPath.split("/");
+        final ArrayList<String> pathSegments = new ArrayList<String>(Arrays.asList(parts));
+        int i = 0;
+        for (; i < parts.length; i++)
+        {
+            final String part = parts[i];
+            if (part.equalsIgnoreCase("_git"))
+            {
+                pathSegments.set(i, "_home");
+                while (pathSegments.size() > i)
+                {
+                    pathSegments.remove(i);
+                }
+                pathSegments.add("About");
+                break;
+            }
+            if (part.equalsIgnoreCase("_home"))
+            {
+                if (i == 0)
+                {
+                    return null;
+                }
+                pathSegments.remove(i - 1);
+                break;
+            }
+        }
+        final String[] newParts = pathSegments.toArray(new String[pathSegments.size()]);
+        final String newPath = StringHelper.join("/", newParts);
+        try
+        {
+            return new URI(uri.getScheme(), uri.getAuthority(), uri.getHost(), uri.getPort(), newPath, null, null);
+        }
+        catch (URISyntaxException e)
+        {
+            throw new Error(e);
         }
     }
 

@@ -415,8 +415,25 @@ public class Program
         }
         else
         {
-            final String template = "The attempt failed with HTTP code %d.";
-            standardOut.println(String.format(template, responseCode));
+            final String failedTemplate = "The attempt failed with HTTP code %d.";
+            standardOut.println(String.format(failedTemplate, responseCode));
+            URI uri = repoUri;
+            while ((uri = VsTeam.createHomeUri(uri)) != null)
+            {
+                standardOut.println(String.format("Retrying with '%s'...", uri));
+                final HttpURLConnection innerResponse = vsTeam.authenticatedHttp(credential);
+                final int innerResponseCode = innerResponse.getResponseCode();
+                if (innerResponseCode != HttpURLConnection.HTTP_OK)
+                {
+                    standardOut.println(String.format(failedTemplate, innerResponseCode));
+                }
+                else
+                {
+                    standardOut.println("Authentication was successful!");
+                    // TODO: fetch version and display it
+                    break;
+                }
+            }
         }
 
         standardOut.println();
