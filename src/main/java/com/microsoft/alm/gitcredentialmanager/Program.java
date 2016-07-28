@@ -396,7 +396,7 @@ public class Program
         }
     };
 
-    private Void checkCredentials(final String repoUriString, final Credential credential)
+    private Void checkCredentials(final String repoUriString, final Credential credential) throws IOException
     {
         standardOut.println();
         standardOut.println("Start of 'CheckCredentials' mode");
@@ -407,7 +407,8 @@ public class Program
 
         final URI repoUri = URI.create(repoUriString);
         final VsTeam vsTeam = new VsTeam(repoUri);
-        final int responseCode = vsTeam.authenticatedHttp(credential);
+        final HttpURLConnection response = vsTeam.authenticatedHttp(credential);
+        int responseCode = response.getResponseCode();
         if (responseCode == HttpURLConnection.HTTP_OK)
         {
             standardOut.println("Authentication was successful!");

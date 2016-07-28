@@ -142,15 +142,19 @@ public class VsTeam
         }
     }
 
-    public int authenticatedHttp(final Credential credential)
+    public HttpURLConnection authenticatedHttp(final Credential credential)
+    {
+        return authenticatedHttp(credential, repoUri);
+    }
+
+    public HttpURLConnection authenticatedHttp(final Credential credential, final URI uri)
     {
         final PasswordAuthenticator authenticator = new PasswordAuthenticator(credential.Username, credential.Password.toCharArray());
         Authenticator.setDefault(authenticator);
         try
         {
-            final HttpURLConnection response = client.get(repoUri);
-            final int responseCode = response.getResponseCode();
-            return responseCode;
+            final HttpURLConnection response = client.get(uri);
+            return response;
         }
         catch (final IOException e)
         {
@@ -166,7 +170,16 @@ public class VsTeam
 
     public boolean areCredentialsValid(final Credential credential)
     {
-        final int responseCode = authenticatedHttp(credential);
+        final HttpURLConnection response = authenticatedHttp(credential);
+        final int responseCode;
+        try
+        {
+            responseCode = response.getResponseCode();
+        }
+        catch (final IOException e)
+        {
+            throw new Error(e);
+        }
         return responseCode == HttpURLConnection.HTTP_OK;
     }
 
