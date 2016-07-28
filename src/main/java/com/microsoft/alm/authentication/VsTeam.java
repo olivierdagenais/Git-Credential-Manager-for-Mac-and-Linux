@@ -149,6 +149,10 @@ public class VsTeam
     public static URI createHomeUri(final URI uri)
     {
         final String uriPath = uri.getPath();
+        if (uriPath == null || uriPath.length() == 0 || uriPath.equals("/"))
+        {
+            return null;
+        }
         final String[] parts = uriPath.split("/");
         final ArrayList<String> pathSegments = new ArrayList<String>(Arrays.asList(parts));
         int i = 0;
@@ -158,16 +162,16 @@ public class VsTeam
             if (part.equalsIgnoreCase("_git"))
             {
                 pathSegments.set(i, "_home");
-                while (pathSegments.size() > i)
+                while (pathSegments.size() > i + 1)
                 {
-                    pathSegments.remove(i);
+                    pathSegments.remove(pathSegments.size() - 1);
                 }
                 pathSegments.add("About");
                 break;
             }
             if (part.equalsIgnoreCase("_home"))
             {
-                if (i == 0)
+                if (i < 2)
                 {
                     return null;
                 }
@@ -179,7 +183,7 @@ public class VsTeam
         final String newPath = StringHelper.join("/", newParts);
         try
         {
-            return new URI(uri.getScheme(), uri.getAuthority(), uri.getHost(), uri.getPort(), newPath, null, null);
+            return new URI(uri.getScheme(), uri.getUserInfo(), uri.getHost(), uri.getPort(), newPath, null, null);
         }
         catch (URISyntaxException e)
         {

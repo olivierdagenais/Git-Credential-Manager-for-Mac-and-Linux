@@ -32,6 +32,64 @@ public class VsTeamTest {
         host = localHostAddress.hostName;
     }
 
+    private static void createHomeUri(final String expected, final String input) {
+        final inputUri = URI.create(input);
+
+        final actualUri = VsTeam.createHomeUri(inputUri);
+
+        final expectedUri = expected == null ? null : URI.create(expected);
+        assert expectedUri == actualUri
+    }
+
+    @Test public void createHomeUri_fromGitRepo() throws Exception {
+        createHomeUri(
+                "http://tfs.example.com:8080/tfs/DefaultCollection/MyProject/_home/About",
+                "http://tfs.example.com:8080/tfs/DefaultCollection/MyProject/_git/MyRepo"
+        )
+    }
+
+    @Test public void createHomeUri_fromTeamProjectHome() throws Exception {
+        createHomeUri(
+                "http://tfs.example.com:8080/tfs/DefaultCollection/_home/About",
+                "http://tfs.example.com:8080/tfs/DefaultCollection/MyProject/_home/About"
+        )
+    }
+
+    @Test public void createHomeUri_fromTeamProjectCollectionHome() throws Exception {
+        createHomeUri(
+                "http://tfs.example.com:8080/tfs/_home/About",
+                "http://tfs.example.com:8080/tfs/DefaultCollection/_home/About"
+        )
+    }
+
+    @Test public void createHomeUri_fromTfsRootHome() throws Exception {
+        createHomeUri(
+                "http://tfs.example.com:8080/_home/About",
+                "http://tfs.example.com:8080/tfs/_home/About"
+        )
+    }
+
+    @Test public void createHomeUri_fromRootHome() throws Exception {
+        createHomeUri(
+                null,
+                "http://tfs.example.com:8080/_home/About"
+        )
+    }
+
+    @Test public void createHomeUri_fromRootWithSlash() throws Exception {
+        createHomeUri(
+                null,
+                "http://tfs.example.com:8080/"
+        )
+    }
+
+    @Test public void createHomeUri_fromRootWithoutSlash() throws Exception {
+        createHomeUri(
+                null,
+                "http://tfs.example.com:8080"
+        )
+    }
+
     @Test public void looksLikeTfsGitPath_onPremises() {
         final input = "/tfs/DefaultCollection/Default/_git/CoolBeans";
 
