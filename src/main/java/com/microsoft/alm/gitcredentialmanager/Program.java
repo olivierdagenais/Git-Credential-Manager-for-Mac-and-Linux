@@ -421,7 +421,7 @@ public class Program
             while ((uri = VsTeam.createHomeUri(uri)) != null)
             {
                 standardOut.println(String.format("Retrying with '%s'...", uri));
-                final HttpURLConnection innerResponse = vsTeam.authenticatedHttp(credential);
+                final HttpURLConnection innerResponse = vsTeam.authenticatedHttp(credential, uri);
                 final int innerResponseCode = innerResponse.getResponseCode();
                 if (innerResponseCode != HttpURLConnection.HTTP_OK)
                 {
