@@ -52,6 +52,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -406,13 +407,15 @@ public class Program
 
         final URI repoUri = URI.create(repoUriString);
         final VsTeam vsTeam = new VsTeam(repoUri);
-        if (vsTeam.areCredentialsValid(credential))
+        final int responseCode = vsTeam.authenticatedHttp(credential);
+        if (responseCode == HttpURLConnection.HTTP_OK)
         {
             standardOut.println("Authentication was successful!");
         }
         else
         {
-            standardOut.println("Authentication was NOT successful!");
+            final String template = "The attempt failed with HTTP code %d.";
+            standardOut.println(String.format(template, responseCode));
         }
 
         standardOut.println();
