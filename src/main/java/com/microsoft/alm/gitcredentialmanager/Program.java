@@ -190,6 +190,7 @@ public class Program
         actions.put("approve", Store);
         actions.put("checkCredential", CheckCredentials);
         actions.put("checkCredentials", CheckCredentials);
+        actions.put("checkGit", CheckGit);
         actions.put("checkTfs", CheckTfs);
         actions.put("erase", Erase);
         actions.put("fill", Get);
@@ -438,6 +439,67 @@ public class Program
 
         standardOut.println();
         standardOut.println("End of 'CheckCredentials' mode");
+        return null;
+    }
+
+
+    private final Callable<Void> CheckGit = new Callable<Void>()
+    {
+        @Override
+        public Void call() throws Exception
+        {
+            header("Running in 'CheckGit' mode to gather information about Git and libcurl versions.");
+
+            standardOut.println();
+            standardOut.println("Start of 'CheckGit' mode");
+
+            checkGit();
+
+            standardOut.println();
+            standardOut.println("End of 'CheckGit' mode");
+            return null;
+        }
+    };
+
+    private Void checkGit()
+    {
+        final DefaultProcessFactory factory = new DefaultProcessFactory();
+        final File git = Where.git();
+        if (git == null || !git.isFile())
+        {
+            standardOut.println("I could not find Git in the path, aborting!");
+            return null;
+        }
+        else
+        {
+            standardOut.printf("I found Git at '%s'.", git.getAbsolutePath()).println();
+        }
+
+        final File gitHttpFetch = Where.git_http_fetch();
+        if (gitHttpFetch == null || !gitHttpFetch.isFile())
+        {
+            standardOut.println("I could not find git-http-fetch, aborting!");
+            return null;
+        }
+        else
+        {
+            standardOut.printf("I found git-http-fetch at '%s'.", gitHttpFetch.getAbsolutePath()).println();
+        }
+
+        final File libcurl = Where.libcurl(factory, gitHttpFetch);
+        if (libcurl == null || !libcurl.isFile())
+        {
+            standardOut.println("I could not find libcurl, aborting!");
+            return null;
+        }
+        else
+        {
+            standardOut.printf("I found libcurl at '%s'.", libcurl.getAbsolutePath()).println();
+        }
+
+        final Version version = Where.determineLibCurlVersion(factory, libcurl);
+        standardOut.printf("libcurl version: %d.%d.%d", version.getMajor(), version.getMinor(), version.getPatch()).println();
+
         return null;
     }
 
