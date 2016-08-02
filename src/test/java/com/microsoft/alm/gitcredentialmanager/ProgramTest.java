@@ -13,6 +13,7 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import javax.xml.bind.DatatypeConverter;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -23,6 +24,8 @@ import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URL;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.util.Arrays;
 import java.util.List;
 
@@ -99,6 +102,37 @@ public class ProgramTest
         final List<String> actual = Program.checkGitRequirements(processFactory, level);
 
         Assert.assertEquals(0, actual.size());
+    }
+
+    @Test public void decode() throws Exception
+    {
+        // TlRMTVNTUAABAAAABoIIAAAAAAAAAAAAAAAAAAAAAAA=
+        // TODO: obtain base64-encoded NTLM messages from output of curl --verbose --ntlm
+        // TODO: probably only need to decode flags at this point
+        final String input = "TlRMTVNTUAACAAAACgAKADgAAAAGgokCx/QlHgcqBdAAAAAAAAAAAOAA4ABCAAAABgO" +
+                "AJQAAAA9KRU5LSU5TLUNJAgAUAEoARQBOAEsASQBOAFMALQBDAEkAAQ" +
+                "AOAFQARgBTADIAMAAxADUABAAuAGMAbwByAHAALgB0AGYAcwAuAGoAZ" +
+                "QBuAGsAaQBuAHMALQBjAGkALgBvAHIAZwADAD4AVABGAFMAMgAwADEA" +
+                "NQAuAGMAbwByAHAALgB0AGYAcwAuAGoAZQBuAGsAaQBuAHMALQBjAGk" +
+                "ALgBvAHIAZwAFAC4AYwBvAHIAcAAuAHQAZgBzAC4AagBlAG4AawBpAG" +
+                "4AcwAtAGMAaQAuAG8AcgBnAAcACAAhCGOad+jRAQAAAAA=";
+        final byte[] bytes = DatatypeConverter.parseBase64Binary(input);
+        final ByteBuffer byteBuffer = ByteBuffer.wrap(bytes);
+        byteBuffer.order(ByteOrder.LITTLE_ENDIAN);
+        final byte[] signature = new byte[8];
+        byteBuffer.get(signature);
+        final byte[] messageType = new byte[4];
+        byteBuffer.get(messageType);
+        final byte[] targetNameFields = new byte[8];
+        byteBuffer.get(targetNameFields);
+        int flags = byteBuffer.getInt();
+        //byteBuffer.slice() will be handy for subsets, especially in the payload
+        byteBuffer.position(42);
+        byteBuffer.mark();
+        final ByteBuffer slice = byteBuffer.slice();
+        // go load from slice
+        byteBuffer.reset();
+
     }
 
     @Test public void isValidGitVersion_badVersion()
